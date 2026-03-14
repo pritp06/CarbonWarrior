@@ -1,0 +1,274 @@
+[
+  {
+    "departure": {
+      "code": "BOM",
+      "name": "Chhatrapati Shivaji Maharaj",
+      "city": "Mumbai",
+      "lat": 19.0896,
+      "lng": 72.8656
+    },
+    "destination": {
+      "code": "JAI",
+      "name": "Jaipur International",
+      "city": "Jaipur",
+      "lat": 26.8242,
+      "lng": 75.8122
+    },
+    "aircraft": {
+      "id": "b737",
+      "name": "Boeing 737-800",
+      "fuelRate": 2.6
+    },
+    "directDistance": 911,
+    "optimizedDistance": 970,
+    "standardFuel": 2369,
+    "optimizedFuel": 2521,
+    "standardCO2": 7487,
+    "optimizedCO2": 7966,
+    "reduction": -6.4,
+    "savings": -133,
+    "waypoints": [
+      {
+        "code": "AMD",
+        "name": "Sardar Vallabhbhai Patel",
+        "city": "Ahmedabad",
+        "lat": 23.0771,
+        "lng": 72.6347
+      }
+    ],
+    "timestamp": "2026-03-14 13:32:19",
+    "id": 98945
+  },
+  {
+    "departure": {
+      "code": "BLR",
+      "name": "Kempegowda International",
+      "city": "Bengaluru",
+      "lat": 13.1986,
+      "lng": 77.7066
+    },
+    "destination": {
+      "code": "AMD",
+      "name": "Sardar Vallabhbhai Patel",
+      "city": "Ahmedabad",
+      "lat": 23.0771,
+      "lng": 72.6347
+    },
+    "aircraft": {
+      "id": "b737",
+      "name": "Boeing 737-800",
+      "fuelRate": 2.6
+    },
+    "directDistance": 1222,
+    "optimizedDistance": 1153,
+    "standardFuel": 3177,
+    "optimizedFuel": 2998,
+    "standardCO2": 10038,
+    "optimizedCO2": 9474,
+    "reduction": 5.6,
+    "savings": 152,
+    "waypoints": [
+      {
+        "code": "BOM",
+        "name": "Chhatrapati Shivaji Maharaj",
+        "city": "Mumbai",
+        "lat": 19.0896,
+        "lng": 72.8656
+      }
+    ],
+    "timestamp": "2026-03-13 22:15:51",
+    "id": 58841
+  },
+  {
+    "departure": {
+      "code": "AMD",
+      "name": "Sardar Vallabhbhai Patel",
+      "city": "Ahmedabad",
+      "lat": 23.0771,
+      "lng": 72.6347
+    },
+    "destination": {
+      "code": "BLR",
+      "name": "Kempegowda International",
+      "city": "Bengaluru",
+      "lat": 13.1986,
+      "lng": 77.7066
+    },
+    "aircraft": {
+      "id": "a320",
+      "name": "Airbus A320",
+      "fuelRate": 2.5
+    },
+    "directDistance": 1222,
+    "optimizedDistance": 1099,
+    "standardFuel": 3055,
+    "optimizedFuel": 2748,
+    "standardCO2": 9652,
+    "optimizedCO2": 8685,
+    "reduction": 10,
+    "savings": 248,
+    "waypoints": [
+      {
+        "code": "BOM",
+        "name": "Chhatrapati Shivaji Maharaj",
+        "city": "Mumbai",
+        "lat": 19.0896,
+        "lng": 72.8656
+      }
+    ],
+    "timestamp": "2026-03-13 11:58:31",
+    "id": 49899
+  },
+  {
+    "departure": {
+      "code": "BOM",
+      "name": "Chhatrapati Shivaji Maharaj",
+      "city": "Mumbai",
+      "lat": 19.0896,
+      "lng": 72.8656
+    },
+    "destination": {
+      "code": "AMD",
+      "name": "Sardar Vallabhbhai Patel",
+      "city": "Ahmedabad",
+      "lat": 23.0771,
+      "lng": 72.6347
+    },
+    "aircraft": {
+      "id": "b737",
+      "name": "Boeing 737-800",
+      "fuelRate": 2.6
+    },
+    "directDistance": 444,
+    "optimizedDistance": 419,
+    "standardFuel": 1154,
+    "optimizedFuel": 1090,
+    "standardCO2": 3648,
+    "optimizedCO2": 3443,
+    "reduction": 5.6,
+    "savings": 57,
+    "waypoints": [],
+    "timestamp": "2026-03-13 11:36:33",
+    "id": 87849
+  },
+  {
+    "departure": {
+      "code": "BLR",
+      "name": "Kempegowda International",
+      "city": "Bengaluru",
+      "lat": 13.1986,
+      "lng": 77.7066
+    },
+    "destination": {
+      "code": "AMD",
+      "name": "Sardar Vallabhbhai Patel",
+      "city": "Ahmedabad",
+      "lat": 23.0771,
+      "lng": 72.6347
+    },
+    "aircraft": {
+      "id": "b737",
+      "name": "Boeing 737-800",
+      "fuelRate": 2.6
+    },
+    "directDistance": 1222,
+    "optimizedDistance": 1074,
+    "standardFuel": 3177,
+    "optimizedFuel": 2792,
+    "standardCO2": 10038,
+    "optimizedCO2": 8821,
+    "reduction": 12.1,
+    "savings": 327,
+    "waypoints": [
+      {
+        "code": "PNQ",
+        "name": "Pune Airport",
+        "city": "Pune",
+        "lat": 18.5822,
+        "lng": 73.9197
+      }
+    ],
+    "timestamp": "2026-03-12 21:23:22",
+    "id": 81919
+  },
+  {
+    "departure": {
+      "code": "BLR",
+      "name": "Kempegowda International",
+      "city": "Bengaluru",
+      "lat": 13.1986,
+      "lng": 77.7066
+    },
+    "destination": {
+      "code": "AMD",
+      "name": "Sardar Vallabhbhai Patel",
+      "city": "Ahmedabad",
+      "lat": 23.0771,
+      "lng": 72.6347
+    },
+    "aircraft": {
+      "id": "b737",
+      "name": "Boeing 737-800",
+      "fuelRate": 2.6
+    },
+    "directDistance": 1222,
+    "optimizedDistance": 1074,
+    "standardFuel": 3177,
+    "optimizedFuel": 2792,
+    "standardCO2": 10038,
+    "optimizedCO2": 8821,
+    "reduction": 12.1,
+    "savings": 327,
+    "waypoints": [
+      {
+        "code": "PNQ",
+        "name": "Pune Airport",
+        "city": "Pune",
+        "lat": 18.5822,
+        "lng": 73.9197
+      }
+    ],
+    "timestamp": "2026-03-12 21:23:18",
+    "id": 35317
+  },
+  {
+    "departure": {
+      "code": "DEL",
+      "name": "Indira Gandhi International",
+      "city": "Delhi",
+      "lat": 28.5562,
+      "lng": 77.1
+    },
+    "destination": {
+      "code": "BOM",
+      "name": "Chhatrapati Shivaji Maharaj",
+      "city": "Mumbai",
+      "lat": 19.0896,
+      "lng": 72.8656
+    },
+    "aircraft": {
+      "id": "a320",
+      "name": "Airbus A320",
+      "fuelRate": 2.5
+    },
+    "directDistance": 1137,
+    "optimizedDistance": 1057,
+    "standardFuel": 2843,
+    "optimizedFuel": 2643,
+    "standardCO2": 8983,
+    "optimizedCO2": 8351,
+    "reduction": 7,
+    "savings": 164,
+    "waypoints": [
+      {
+        "code": "JAI",
+        "name": "Jaipur International",
+        "city": "Jaipur",
+        "lat": 26.8242,
+        "lng": 75.8122
+      }
+    ],
+    "timestamp": "2026-03-12 21:17:34",
+    "id": 83252
+  }
+]

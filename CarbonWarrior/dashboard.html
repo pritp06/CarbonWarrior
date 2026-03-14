@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — CarbonWarrior</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.3.0/dist/leaflet-ant-path.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+
+<body>
+  <button class="close-presentation-btn" onclick="togglePresentationMode()">Exit Presentation</button>
+
+  <div class="dashboard-layout">
+
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" style="display: flex; align-items: center; gap: 0.5rem; color: inherit; text-decoration: none; width: 100%;">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.4-.1.9.3 1.1l5.6 3.4-2.8 2.8-2.2-.7c-.4-.1-.9 0-1.2.3l-.3.3c-.3.3-.3.7-.1 1.1l1.5 2.5 2.5 1.5c.4.2.8.2 1.1-.1l.3-.3c.3-.3.4-.8.3-1.2l-.7-2.2 2.8-2.8 3.4 5.6c.2.4.7.5 1.1.3l.5-.3c.4-.2.6-.6.5-1.1z" />
+          </svg>
+          Carbon<span style="color: #ffd700;">Warrior</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav" data-intro="Navigate between different modules of the platform here.">
+        <button class="sidebar-btn active" data-section="optimizer" onclick="switchSection('optimizer', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="6" cy="19" r="3" />
+            <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+            <circle cx="18" cy="5" r="3" />
+          </svg>
+          Route Optimizer
+        </button>
+        <button id="weatherToggleBtn" class="sidebar-btn" onclick="toggleWeatherIntelligence()" style="border: 1px solid rgba(16, 185, 129, 0.2); margin-top: 4px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+          </svg>
+          Weather Intelligence
+        </button>
+        <button class="sidebar-btn" data-section="map" onclick="switchSection('map', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+            <line x1="9" y1="3" x2="9" y2="18" />
+            <line x1="15" y1="6" x2="15" y2="21" />
+          </svg>
+          Route Map
+        </button>
+        <button class="sidebar-btn" data-section="analytics" onclick="switchSection('analytics', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+          Emission Analytics
+        </button>
+        <button class="sidebar-btn" data-section="network" onclick="switchSection('network', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="5" r="3" />
+            <line x1="12" y1="8" x2="12" y2="16" />
+            <circle cx="6" cy="19" r="3" />
+            <circle cx="18" cy="19" r="3" />
+            <line x1="12" y1="16" x2="6" y2="16" />
+            <line x1="12" y1="16" x2="18" y2="16" />
+          </svg>
+          Airport Network
+        </button>
+        <button class="sidebar-btn" data-section="report" onclick="switchSection('report', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          Report
+        </button>
+        <button class="sidebar-btn" data-section="leaderboard" onclick="switchSection('leaderboard', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9" />
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+            <rect x="6" y="14" width="12" height="8" />
+          </svg>
+          Sustainability Leaderboard
+        </button>
+        <button class="sidebar-btn" data-section="comparison" onclick="switchSection('comparison', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          Aircraft Comparison
+        </button>
+      </nav>
+    </aside>
+
+    <!-- ========== MAIN ========== -->
+    <div class="dashboard-main">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button id="mobileSidebarToggle" class="mobile-sidebar-btn" title="Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div>
+            <h1>Flight Route Carbon Optimization Dashboard</h1>
+            <div class="dashboard-header-info" id="headerInfo"></div>
+          </div>
+        </div>
+        <div class="dashboard-header-icons">
+          <button title="Presentation Mode" id="presentationModeBtn" onclick="togglePresentationMode()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </button>
+          <button title="Toggle Theme" id="themeToggleBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" id="themeIcon">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+          <a href="index.html" class="btn" style="color: #ffd700; background: rgba(255, 215, 0, 0.1); padding: 0.5rem 1rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back
+          </a>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="dashboard-content">
+
+        <!-- SECTION: Optimizer -->
+        <div id="section-optimizer" class="dashboard-section active">
+          <h2 class="section-title">Route Optimizer</h2>
+          <p class="text-muted text-sm" style="margin-bottom:1.5rem">Select airports and aircraft to optimize the route
+          </p>
+
+          <div class="optimizer-inputs" data-intro="Select your airline, route, and aircraft type to run a carbon savings optimization.">
+            <div class="metric-card input-card">
+              <label>Airline</label>
+              <select id="airline">
+                <option value="">Select airline</option>
+                <option value="Air India">Air India</option>
+                <option value="IndiGo">IndiGo</option>
+                <option value="SpiceJet">SpiceJet</option>
+                <option value="Akasa Air">Akasa Air</option>
+                <option value="Air India Express">Air India Express</option>
+              </select>
+            </div>
+            <div class="metric-card input-card">
+              <label>Departure Airport</label>
+              <select id="departure">
+                <option value="">Select airport</option>
+              </select>
+            </div>
+            <div class="metric-card input-card">
+              <label>Destination Airport</label>
+              <select id="destination">
+                <option value="">Select airport</option>
+              </select>
+            </div>
+            <div class="metric-card input-card">
+              <label>Aircraft Type</label>
+              <select id="aircraft">
+                <option value="">Select aircraft</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="optimizeBtn" class="btn btn-primary btn-lg" onclick="runOptimization()" disabled data-intro="Click this button to calculate exactly how much fuel and money you could save.">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <polygon points="3 11 22 2 13 21 11 13 3 11" />
+            </svg>
+            Optimize Route
+          </button>
+
+          <!-- Results (hidden initially) -->
+          <div id="optimizationResults" style="display:none; margin-top: 2rem;">
+            <h3 style="font-family:var(--font-heading);font-weight:600;margin-bottom:1rem; color:#ffb700;;">Optimization
+              Results</h3>
+            <div class="results-grid" data-intro="Your optimization results will explicitly break down your savings across metrics.">
+              <div class="metric-card result-card">
+                <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"
+                    width="16" height="16">
+                    <circle cx="6" cy="19" r="3" />
+                    <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+                    <circle cx="18" cy="5" r="3" />
+                  </svg><span>Optimized Distance</span></div>
+                <div class="result-value color-primary" id="resDistance">—</div>
+              </div>
+              <div class="metric-card result-card">
+                <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
+                    width="16" height="16">
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                    <path d="M4 6V4a2 2 0 0 1 2-2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2" />
+                  </svg><span>Fuel Consumption</span></div>
+                <div class="result-value color-accent" id="resFuel">—</div>
+              </div>
+              <div class="metric-card result-card">
+                <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--muted-fg)" stroke-width="2"
+                    width="16" height="16">
+                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                  </svg><span>CO₂ Emissions</span></div>
+                <div class="result-value color-muted" id="resCO2">—</div>
+              </div>
+              <div class="metric-card result-card">
+                <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2"
+                    width="16" height="16">
+                    <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
+                    <polyline points="16 17 22 17 22 11" />
+                  </svg><span>Emission Reduction</span></div>
+                <div class="result-value color-secondary" id="resReduction">—</div>
+              </div>
+              <div class="metric-card result-card">
+                <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" width="16" height="16">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg><span>Cost Savings</span></div>
+                <div class="result-value color-secondary" id="resSavings">—</div>
+              </div>
+            </div>
+            <div class="metric-card result-summary" id="resSummary" style="margin-top:1rem;"></div>
+            
+            <!-- AI INTELLIGENCE BRIEFING -->
+            <div id="aiBriefing" class="ai-briefing-card" style="display:none;">
+              <div class="ai-badge">AI Intelligence</div>
+              <div class="ai-text" id="aiBriefingText">
+                Analyzing route efficiency and environmental impact...<span class="typing-cursor">|</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION: Map -->
+        <div id="section-map" class="dashboard-section">
+          <h2 class="section-title">Route Map</h2>
+          <div class="metric-card map-container">
+            <div id="routeMapLeaflet" style="height: 500px; width: 100%; border-radius: 8px;"></div>
+          </div>
+        </div>
+
+        <!-- SECTION: Analytics -->
+        <div id="section-analytics" class="dashboard-section">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <h2 class="section-title" style="margin-bottom:0">Emission Analytics</h2>
+            <select id="timeFilter" class="input-card" style="padding: 0.5rem; border-radius: 8px; background: var(--card); color: var(--card-fg); border: 1px solid var(--border);" onchange="updateTrends()">
+              <option value="1m" style="background: var(--card); color: var(--card-fg);">Last 1 Month</option>
+              <option value="3m" style="background: var(--card); color: var(--card-fg);">Last 3 Months</option>
+              <option value="6m" style="background: var(--card); color: var(--card-fg);">Last 6 Months</option>
+              <option value="1y" style="background: var(--card); color: var(--card-fg);">Year to Date</option>
+            </select>
+          </div>
+          <div id="analyticsPlaceholder" class="metric-card" style="text-align:center;padding:3rem;margin-top:1rem;">
+            <p class="text-muted">Run an optimization to see analytics</p>
+          </div>
+          <div id="analyticsCharts" style="display:none">
+            <div class="charts-grid">
+              <div class="metric-card chart-card">
+                <h3>CO₂ Emissions Comparison</h3>
+                <canvas id="barChart"></canvas>
+              </div>
+              <div class="metric-card chart-card">
+                <h3>Fuel Consumption Trend</h3>
+                <canvas id="lineChart"></canvas>
+              </div>
+              <div class="metric-card chart-card full-width">
+                <h3>Aircraft Fuel Distribution</h3>
+                <canvas id="pieChart" style="max-height:280px"></canvas>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Cloud Archive Section -->
+          <div id="section-archive" style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h2 class="section-title" style="margin-bottom:0">Cloud Missions Archive</h2>
+              <span style="background: rgba(16, 185, 129, 0.1); color: #10B981; font-size: 0.65rem; padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 700; letter-spacing: 0.5px;">BACKEND LIVE</span>
+            </div>
+            <div class="metric-card" id="savedRoutesList" style="padding: 0; min-height: 100px;">
+              <p class="text-center text-muted" style="padding: 2rem;">Syncing with cloud storage...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION: Network -->
+        <div id="section-network" class="dashboard-section">
+          <h2 class="section-title">Airport Network</h2>
+          <p class="network-description">Graph visualization of connected airports within 1200 km range</p>
+          <div class="metric-card map-container">
+            <div id="networkMapLeaflet" style="height: 500px; width: 100%; border-radius: 8px;"></div>
+          </div>
+        </div>
+
+        <div id="section-report" class="dashboard-section">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="section-title" style="margin-bottom:0.2rem">Airline Performance Report</h2>
+              <p class="text-muted text-sm" style="margin-bottom:0">Select an airline and period to view performance and emission statistics</p>
+            </div>
+            <div id="exportActionButtons" style="display: flex; gap: 0.5rem;">
+              <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="exportCSV()">Download CSV</button>
+              <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="exportPDF()">Print PDF</button>
+            </div>
+          </div>
+          
+          <div class="optimizer-inputs" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 2rem;">
+            <div class="metric-card input-card">
+              <label>Select Airline</label>
+              <select id="reportAirlineSelect" onchange="updateMonthlyReport()">
+                <option value="">Choose an airline...</option>
+                <option value="IndiGo">IndiGo</option>
+                <option value="Air India">Air India</option>
+                <option value="Akasa Air">Akasa Air</option>
+                <option value="SpiceJet">SpiceJet</option>
+                <option value="Air India Express">Air India Express</option>
+              </select>
+            </div>
+            <div class="metric-card input-card">
+              <label>Select Period</label>
+              <select id="reportPeriodSelect" onchange="updateMonthlyReport()">
+                <option value="1">Last 1 Month</option>
+                <option value="3">Last 3 Months</option>
+                <option value="6">Last 6 Months</option>
+                <option value="12">Last Year (12m)</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="reportDataContainer" class="metric-card" style="display: none; padding: 2rem; background: rgba(5, 17, 36, 0.4);">
+            <div class="report-grid">
+              <div class="metric-card result-card" style="background: var(--card);">
+                <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" width="24" height="24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span id="repFlightsLabel">Total Flights</span></div>
+                <div class="result-value color-primary" id="repFlights">—</div>
+              </div>
+              <div class="metric-card result-card" style="background: var(--card);">
+                <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="24" height="24"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M4 6V4a2 2 0 0 1 2-2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"/></svg><span>Total Fuel</span></div>
+                <div class="result-value color-accent" id="repFuel">—</div>
+              </div>
+              <div class="metric-card result-card" style="background: var(--card);">
+                <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24" id="repFuelChangeIcon"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7" /><polyline points="16 17 22 17 22 11" /></svg><span>Fuel Change</span></div>
+                <div class="result-value" id="repFuelChange">—</div>
+              </div>
+              <div class="metric-card result-card" style="background: var(--card);">
+                <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24" id="repCarbonChangeIcon"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7" /><polyline points="16 17 22 17 22 11" /></svg><span>Carbon Change (%)</span></div>
+                <div class="result-value" id="repCarbonChange">—</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- SECTION: Aircraft Comparison -->
+        <div id="section-comparison" class="dashboard-section">
+          <h2 class="section-title">Aircraft Head-to-Head Comparison</h2>
+          <p class="text-muted text-sm" style="margin-bottom:1.5rem">Select two aircraft to compare their efficiency for a direct 1000km route.</p>
+          
+          <div class="optimizer-inputs">
+            <div class="metric-card input-card">
+              <label>Aircraft #1</label>
+              <select id="compAir1" class="input-card" style="padding: 0.5rem; border-radius: 8px; background: var(--card); color: var(--card-fg); border: 1px solid var(--border);" onchange="updateComparison()">
+                <option value="">Select Aircraft</option>
+              </select>
+            </div>
+            <div class="metric-card input-card">
+              <label>Aircraft #2</label>
+              <select id="compAir2" class="input-card" style="padding: 0.5rem; border-radius: 8px; background: var(--card); color: var(--card-fg); border: 1px solid var(--border);" onchange="updateComparison()">
+                <option value="">Select Aircraft</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="comparisonResults" style="display:none; margin-top: 2rem;">
+            <div class="charts-grid">
+              <div class="metric-card chart-card">
+                <h3>Fuel Consumption Analysis</h3>
+                <canvas id="compChart"></canvas>
+              </div>
+              <div class="metric-card result-card" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <h3 style="margin-bottom:1rem; font-size:1rem; color:var(--muted-fg)">Winner (Most Efficient)</h3>
+                <div id="compWinner" class="result-value color-secondary" style="font-size:1.8rem; margin-bottom:0.5rem">---</div>
+                <p id="compDiffText" class="text-muted" style="font-size:0.9rem"></p>
+                <div style="margin-top:1.5rem; width:100%; border-top:1px solid var(--border); padding-top:1rem;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; color:var(--muted-fg);">
+                    <span>Emissions Savings:</span>
+                    <span id="compEmissionsSaved" class="color-accent" style="font-weight:600">--</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; color:var(--muted-fg);">
+                    <span>Cost Difference:</span>
+                    <span id="compCostDiff" class="color-secondary" style="font-weight:600">--</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION: Sustainability Leaderboard -->
+        <div id="section-leaderboard" class="dashboard-section">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 class="section-title" style="margin-bottom:0.2rem">Sustainability Leaderboard 🏆</h2>
+              <p class="text-muted text-sm">Global ranking of airlines based on carbon efficiency and optimization adoption</p>
+            </div>
+            <div style="background: var(--glass); padding: 0.5rem 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+              <span style="color: var(--secondary); font-weight: 700; font-size: 0.8rem;">LIVE RECOGNITION</span>
+            </div>
+          </div>
+
+          <div class="metric-card" style="padding: 1.5rem; background: var(--glass); border: 1px solid var(--glass-border);">
+            <div class="leaderboard-header">
+              <span>Rank</span>
+              <span>Airline</span>
+              <span>Eco-Score</span>
+              <span>Carbon Reduction</span>
+            </div>
+            <div id="leaderboardList">
+              <!-- Dynamically populated by app.js -->
+            </div>
+          </div>
+
+          <div class="charts-grid" style="margin-top: 2rem;">
+            <div class="metric-card chart-card">
+              <h3>Regional Efficiency Index</h3>
+              <canvas id="leaderboardBarChart"></canvas>
+            </div>
+            <div class="metric-card" style="display: flex; flex-direction: column; justify-content: center; padding: 2rem;">
+              <h3 style="margin-bottom: 1.5rem; color: #ffd700;">Why these rankings?</h3>
+              <ul style="color: #cbd5e1; font-size: 0.85rem; list-style: none;">
+                <li style="margin-bottom: 1rem; display: flex; gap: 0.75rem;">
+                  <span style="color: var(--secondary);">✔</span>
+                  <span>Use of latest generation aircraft (A321neo, 737 MAX).</span>
+                </li>
+                <li style="margin-bottom: 1rem; display: flex; gap: 0.75rem;">
+                  <span style="color: var(--secondary);">✔</span>
+                  <span>Adoption of CarbonWarrior pathfinding algorithms.</span>
+                </li>
+                <li style="margin-bottom: 1rem; display: flex; gap: 0.75rem;">
+                  <span style="color: var(--secondary);">✔</span>
+                  <span>Optimized takeoff and descent weight profiles.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

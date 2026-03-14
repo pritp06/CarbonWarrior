@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarbonWarrior</title>
+  <meta name="description" content="A data-driven platform that analyzes regional flight networks and identifies fuel-efficient routes to reduce aviation emissions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <!-- Logo is empty for now -->
+      <a href="index.html" class="navbar-brand">
+        <svg class="icon icon-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.4-.1.9.3 1.1l5.6 3.4-2.8 2.8-2.2-.7c-.4-.1-.9 0-1.2.3l-.3.3c-.3.3-.3.7-.1 1.1l1.5 2.5 2.5 1.5c.4.2.8.2 1.1-.1l.3-.3c.3-.3.4-.8.3-1.2l-.7-2.2 2.8-2.8 3.4 5.6c.2.4.7.5 1.1.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
+        CarbonWarrior
+      </a>
+      <div class="navbar-links">
+        <a href="#home">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="#about">About</a>
+        <button id="homeThemeToggle" class="nav-theme-btn" title="Toggle Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" id="homeThemeIcon">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+        </button>
+      </div>
+      <button class="mobile-menu-btn" onclick="document.querySelector('.navbar-links').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="home" class="hero gradient-hero">
+    <div class="container hero-grid">
+      <div class="hero-content fade-up">
+        <h1 class="hero-title" style="margin-bottom: 2rem;">
+          <span style="color: #ffd700;">Aviation Carbon</span><br />
+          <span style="color: #10B981;">Route Optimizer</span>
+        </h1>
+        <p class="hero-subtitle">
+          A data-driven platform that analyzes regional flight networks and identifies fuel-efficient routes to reduce aviation emissions.
+        </p>
+        <a href="dashboard.html" class="btn btn-primary btn-lg" style="margin-top: 1rem; border-radius: 30px; padding: 1rem 2.5rem; background-color: #0000ff;">
+          Open Dashboard
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="hero-video fade-up" style="animation-delay: 0.2s">
+        <a href="Ahmadabad to Ahmadabad map animation video.mp4" alt="Aviation route optimization visualization">
+          <video autoplay loop muted playsinline class="video-preview">
+            <source src="Ahmadabad to Ahmadabad map animation video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </a>    
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROBLEM ========== -->
+  <section class="section bg-card">
+    <div class="container problem-grid">
+      <div class="fade-up">
+        <h2 class="section-title">The Aviation Emission Challenge</h2>
+        <p class="text-muted">
+          Aviation contributes significant carbon emissions globally. Many regional flight routes remain inefficient due to historical routing patterns and operational constraints.
+        </p>
+        <p class="text-muted" style="margin-top: 1rem;">
+          Without data-driven optimization, airlines continue to burn excess fuel, contributing unnecessarily to climate change and increasing operational costs.
+        </p>
+      </div>
+      <div class="stats-grid fade-up" style="animation-delay: 0.15s">
+        <div class="metric-card text-center">
+          <div class="metric-value">2.4%</div>
+          <div class="metric-label">Global CO₂ from aviation</div>
+        </div>
+        <div class="metric-card text-center">
+          <div class="metric-value">915M</div>
+          <div class="metric-label">Tonnes CO₂ per year</div>
+        </div>
+        <div class="metric-card text-center">
+          <div class="metric-value">30%</div>
+          <div class="metric-label">Potential route inefficiency</div>
+        </div>
+        <div class="metric-card text-center">
+          <div class="metric-value">2070</div>
+          <div class="metric-label">Net Zero target (India)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOLUTION ========== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="text-center fade-up">
+        <h2 class="section-title">How It Works</h2>
+        <p class="text-muted">Three pillars of aviation route optimization</p>
+      </div>
+      <div class="features-grid">
+        <div class="metric-card feature-card fade-up" style="animation-delay: 0s">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="16"/><circle cx="6" cy="19" r="3"/><circle cx="18" cy="19" r="3"/><line x1="12" y1="16" x2="6" y2="16"/><line x1="12" y1="16" x2="18" y2="16"/></svg>
+          </div>
+          <h3 class="feature-title">Network Optimization</h3>
+          <p class="text-muted text-sm">Graph algorithms analyze airport networks to determine efficient flight paths.</p>
+        </div>
+        <div class="metric-card feature-card fade-up" style="animation-delay: 0.15s">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M15 18a3 3 0 1 0-6 0"/><path d="M12 15v-3"/><path d="M4 6V4a2 2 0 0 1 2-2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2"/></svg>
+          </div>
+          <h3 class="feature-title">Fuel Consumption Modeling</h3>
+          <p class="text-muted text-sm">Aircraft fuel burn rates are used to estimate total fuel consumption.</p>
+        </div>
+        <div class="metric-card feature-card fade-up" style="animation-delay: 0.3s">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3 class="feature-title">Emission Reduction Analysis</h3>
+          <p class="text-muted text-sm">CO₂ emissions are calculated and compared between standard and optimized routes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section cta-section">
+    <div class="container text-center fade-up">
+      <h2 class="cta-title">Start Optimizing Aviation Routes</h2>
+      <p class="cta-subtitle">Analyze routes, reduce emissions, and contribute to a sustainable aviation future.</p>
+      <a href="dashboard.html" class="btn btn-secondary btn-lg">
+        Launch Dashboard
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <p class="footer-text">
+      &copy; 2026 CARBON WARRIOR. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const themeBtn = document.getElementById("homeThemeToggle");
+    const themeIcon = document.getElementById("homeThemeIcon");
+    
+    if (localStorage.getItem("theme") === "light") {
+      document.body.classList.add("light-mode");
+      updateHomeThemeIcon();
+    }
+
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+        const isLight = document.body.classList.contains("light-mode");
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+        updateHomeThemeIcon();
+      });
+    }
+
+    function updateHomeThemeIcon() {
+      if (!themeIcon) return;
+      if (document.body.classList.contains("light-mode")) {
+        themeIcon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+      } else {
+        themeIcon.innerHTML = `<circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />`;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
