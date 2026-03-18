@@ -84,4 +84,3 @@ Prit Patel
 License:-
 This project is for educational and research purposes.
 
-ChatGPT (for AI-assisted code generation and problem-solving)
