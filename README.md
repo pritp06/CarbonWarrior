@@ -37,6 +37,7 @@ Antigravity (for UI/logic inspiration)
 ChatGpt
 
 Project Structure:-
+
 CarbonWarrior/
 │── static/              
 │── templates/           
