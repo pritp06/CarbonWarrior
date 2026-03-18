@@ -1,25 +1,25 @@
-🌱 CarbonWarrior
+CarbonWarrior
 
 A web-based environmental intelligence platform that analyzes aircraft routes, fuel consumption, and carbon emissions to promote smarter and more sustainable aviation decisions.
 
-🔗 Live Demo
+Live Demo
 
 https://carbonwarrior.vercel.app/
 
-📌 Overview
+Overview
 
 CarbonWarrior is designed to visualize and analyze aviation data with a focus on environmental impact. It helps in understanding fuel usage, CO₂ emissions, and route efficiency using simple datasets and interactive UI.
 
 The project combines frontend visualization with backend logic to simulate real-world aviation analytics.
 
 Features:-
-✈️ Aircraft route visualization
-⛽ Fuel consumption analysis
-🌍 CO₂ emission estimation
-📊 Data-driven insights using JSON datasets
-🧠 Smart logic for route comparison
-🌐 Interactive frontend interface
-⚡ Lightweight and fast performance
+ Aircraft route visualization
+ Fuel consumption analysis
+ CO₂ emission estimation
+ Data-driven insights using JSON datasets
+ Smart logic for route comparison
+ Interactive frontend interface
+ Lightweight and fast performance
 
 Tech Stack
 Frontend:-
@@ -38,12 +38,12 @@ ChatGpt
 
 Project Structure:-
 CarbonWarrior/
-│── static/              # CSS, JS, assets
-│── templates/           # HTML files
-│── data/                # JSON datasets
-│── app.py               # Flask backend
-│── requirements.txt     # Dependencies
-│── README.md            # Project documentation
+│── static/              
+│── templates/           
+│── data/                
+│── app.py               
+│── requirements.txt     
+│── README.md            
 
 How It Works:-
 Aircraft and route data are stored in JSON format
