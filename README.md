@@ -79,7 +79,7 @@ API integration for weather and air traffic
 Database upgrade (SQL/NoSQL)
 
 Author:-
-Prit Patel
+Hevinsh Desai
 
 License:-
 This project is for educational and research purposes.
